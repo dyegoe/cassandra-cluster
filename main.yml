@@ -25,7 +25,7 @@
 
 - name: Swarm manager configuration
   hosts: swarm_manager
-  gather_facts: true
+  gather_facts: false
 
   roles:
     - role: docker_swarm_manager_init
@@ -34,7 +34,7 @@
 
 - name: Swarm nodes configuration
   hosts: swarm_nodes
-  gather_facts: true
+  gather_facts: false
 
   roles:
     - role: docker_swarm_nodes
