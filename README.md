@@ -18,7 +18,7 @@ This playbook covers a preparation of servers to compose a Cassandra cluster usi
 
 #### users_mgmt
 
-Create users on machine based on the `group_vars/all/users.yml` file. This file is encrypted using `ansible_vault`.
+Create users on machine based on the `group_vars/all/users.yml` file. This file is encrypted using `ansible_vault`. Password stored `~/.vault_password_cassandra`.
 
 #### firewall
 
