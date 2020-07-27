@@ -1,0 +1,79 @@
+---
+- name: Reset UFW before
+  ufw:
+    state: reset
+    policy: allow
+
+- name: Enable UFW and and configure 'allow' as default
+  ufw:
+    state: enabled
+    policy: allow
+
+- name: Set UFW logging
+  ufw:
+    logging: 'on'
+    
+- name: Allow SSH
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Allow docker swarm ports 2376/tcp
+  ufw:
+    rule: allow
+    port: "2376"
+    proto: "tcp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: Allow docker swarm ports 2377/tcp
+  ufw:
+    rule: allow
+    port: "2377"
+    proto: "tcp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+    
+- name: Allow docker swarm ports 7946/tcp
+  ufw:
+    rule: allow
+    port: "7946"
+    proto: "tcp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: Allow docker swarm ports 7946/udp
+  ufw:
+    rule: allow
+    port: "7946"
+    proto: "udp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: Allow docker swarm ports 4789/udp
+  ufw:
+    rule: allow
+    port: "4789"
+    proto: "udp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: Allow docker swarm ports 80/tcp
+  ufw:
+    rule: allow
+    port: "80"
+    proto: "tcp"
+    src: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: Reject all
+  ufw:
+    rule: reject
+    log: yes

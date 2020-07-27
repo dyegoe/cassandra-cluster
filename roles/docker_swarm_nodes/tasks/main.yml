@@ -1,0 +1,10 @@
+---
+- name: Check for reboot hint
+  shell: "docker info | grep Swarm | sed 's/Swarm: //g'"
+  ignore_errors: true
+  register: swarm_mode
+
+- name: Add Workers to the Swarm
+  shell: "docker swarm join --token {{ hostvars[groups.swarm_manager[0]]['worker_token']['stdout'] }} {{ hostvars[groups.swarm_manager[0]]['ansible_eth0']['ipv4']['address'] }}:2377"
+  when: not swarm_mode['stdout_lines'][-1] == " active"
+  

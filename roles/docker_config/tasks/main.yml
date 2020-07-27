@@ -1,0 +1,23 @@
+---
+- name: Install docker
+  apt:
+    name: docker.io
+    state: latest
+  register: docker_install_tmp
+
+- name: Restart docker if needed
+  systemd:
+    name: docker
+    state: restarted
+  when: docker_install_tmp['changed']
+
+- name: Make sure that docker is started and enabled
+  systemd:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Install docker python
+  pip:
+    name: docker-py
+    state: latest

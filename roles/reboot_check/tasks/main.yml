@@ -1,0 +1,9 @@
+---
+- name: Check for reboot hint
+  shell: cat /var/run/reboot-required; echo $?;
+  ignore_errors: true
+  register: reboot_tmp
+
+- name: Reboot if needed
+  reboot:
+  when: reboot_tmp['stdout_lines'][-1] == "0"
