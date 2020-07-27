@@ -1,0 +1,24 @@
+---
+- name: Add user
+  user:
+    name: "{{ item['username'] }}"
+    shell: /bin/bash
+    groups: "{{ item['groups'] }}"
+    append: yes
+    state: "{{ item['state'] }}"
+  with_items: "{{ users }}"
+  loop_control:
+    label: "{{ item['username'] }}"
+  when: group_names is subset(item['host_access_groups'])
+
+- name: Set authorized key taken from file
+  authorized_key:
+    user: "{{ item['username'] }}"
+    state: "{{ item['state'] }}"
+    key: "{{ item['ssh_public_key'] }}"
+  with_items: "{{ users }}"
+  loop_control:
+    label: "{{ item['username'] }}"
+  when: group_names is subset(item['host_access_groups'])
+  ignore_errors: true
+  

@@ -16,6 +16,8 @@
       tags: [ update, upgrade, docker ]
 
   roles:
+    - role: users_mgmt
+      tags: users
     - role: firewall
       tags: firewall
     - role: docker_config
