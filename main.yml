@@ -33,7 +33,6 @@
     - role: docker_swarm_manager_init
       tags: swarm
 
-
 - name: Swarm nodes configuration
   hosts: swarm_nodes
   gather_facts: false
