@@ -1,0 +1,17 @@
+---
+- name: Copy file to remote host
+  template:
+    src: "docker-compose.yml.j2"
+    dest: "/opt/cassandra/docker-compose.yml"
+
+- name: Install jsondiff
+  pip:
+    name: jsondiff
+    state: latest
+
+- name: Deploy stack from a compose file
+  docker_stack:
+    state: present
+    name: cassandra
+    compose:
+      - /opt/cassandra/docker-compose.yml

@@ -40,3 +40,23 @@
   roles:
     - role: docker_swarm_nodes
       tags: swarm
+
+- name: Prepare nodes to deploy Cassandra
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Make sure that destination dir exists.
+      file:
+        path: "/opt/cassandra/data"
+        state: directory
+        recurse: yes
+      tags: cassandra
+
+- name: Deploy Cassandra
+  hosts: swarm_manager
+  gather_facts: false
+
+  roles:
+    - role: cassandra
+      tags: cassandra

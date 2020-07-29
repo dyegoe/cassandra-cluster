@@ -41,3 +41,7 @@ Configure swarm manager node. It runs only for the `swarm_manager` group.
 #### docker_swarm_nodes
 
 Join Swarm nodes. It runs only for the `swarm_nodes` group.
+
+#### cassandra
+
+There is a `docker-compose.yml` template under `roles/cassandra/templates`.
