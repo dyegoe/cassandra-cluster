@@ -45,3 +45,12 @@ Join Swarm nodes. It runs only for the `swarm_nodes` group.
 #### cassandra
 
 There is a `docker-compose.yml` template under `roles/cassandra/templates`.
+
+## References
+
+- [https://docs.docker.com/compose/compose-file/](https://docs.docker.com/compose/compose-file/)
+- [https://docs.docker.com/engine/swarm/swarm-tutorial/inspect-service/](https://docs.docker.com/engine/swarm/swarm-tutorial/inspect-service/)
+- [https://docs.docker.com/engine/reference/commandline/service_update/](https://docs.docker.com/engine/reference/commandline/service_update/)
+- [https://ralph.blog.imixs.com/2019/06/24/cassandra-and-docker-swarm/](https://ralph.blog.imixs.com/2019/06/24/cassandra-and-docker-swarm/)
+- [https://hub.docker.com/_/cassandra](https://hub.docker.com/_/cassandra)
+- [https://docs.ansible.com/ansible/latest/modules/docker_stack_module.html](https://docs.ansible.com/ansible/latest/modules/docker_stack_module.html)
