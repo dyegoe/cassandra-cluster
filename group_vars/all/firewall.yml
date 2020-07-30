@@ -1,0 +1,11 @@
+firewall_ports_inter_hosts:
+  - port: "2376"
+    proto: "tcp"
+  - port: "2377"
+    proto: "tcp"
+  - port: "7946"
+    proto: "tcp"
+  - port: "7946"
+    proto: "udp"
+  - port: "4789"
+    proto: "udp"
