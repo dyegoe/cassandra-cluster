@@ -7,6 +7,7 @@
       apt:
         name: "*"
         state: latest
+        update_cache: yes
       tags: [ update, upgrade ]
         
     - name: Install python pip
@@ -16,12 +17,12 @@
       tags: [ update, upgrade, docker ]
 
   roles:
-    - role: users_mgmt
-      tags: users
     - role: firewall
       tags: firewall
     - role: docker_config
       tags: docker
+    - role: users_mgmt
+      tags: users
     - role: reboot_check
       tags: always
 
