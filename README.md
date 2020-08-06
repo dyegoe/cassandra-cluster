@@ -4,6 +4,7 @@ This playbook covers a preparation of servers to compose a Cassandra cluster usi
 
 ## Limitations and improvements
 
+- `dopy` with python3 is returning an error. I couldn't provide a solution to create the droplets using ansible. I must look forward for a solution with more time.
 - For the firewall rules, I decided to go with an specific network interface to get the IPv4. It limits which kind of setup this ansible can cover.
 - The swarm role has the same limitation as mentioned above.
 
