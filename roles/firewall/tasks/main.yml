@@ -22,8 +22,8 @@
 - name: Add inter hosts firewall rules
   ufw:
     rule: allow
-    port: "{{ item[1][port] }}"
-    proto: "{{ item[1][proto] }}"
+    port: "{{ item[1]['port'] }}"
+    proto: "{{ item[1]['proto'] }}"
     src: "{{ hostvars[item[0]]['ansible_eth0']['ipv4']['address'] }}"
   with_nested:
     - "{{ groups['all'] }}"
